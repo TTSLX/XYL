@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS环球国旅 - Total Travel International Travel Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        .worldwide-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.7;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 115, 232, 0.7), rgba(13, 71, 161, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600"><rect fill="%231a73e8" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6d00;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 109, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 109, 0, 0.6);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon span {
+            font-size: 36px;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Features Section */
+        .features {
+            background: #f5f9ff;
+            padding: 80px 20px;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .feature-item .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 18px;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Destinations */
+        .destinations {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .dest-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .dest-card:hover {
+            transform: scale(1.03);
+        }
+
+        .dest-img {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dest-card h4 {
+            padding: 15px;
+            text-align: center;
+            background: white;
+            font-size: 16px;
+        }
+
+        .dest-1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .dest-2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .dest-3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .dest-4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .dest-5 { background: linear-gradient(135deg, #fa709a, #fee140); }
+        .dest-6 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+
+        /* Footer */
+        .footer {
+            background: #0d47a1;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #64b5f6;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                gap: 15px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .section-title h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo-text">
+                    <h1>TTS环球国旅</h1>
+                    <p>Total Travel International Travel Services Co.,Ltd</p>
+                </div>
+                <div class="worldwide-badge">🌍 全球服务 WORLDWIDE SERVICE</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#home">首页</a>
+                <a href="#services">出境游</a>
+                <a href="#destinations">目的地</a>
+                <a href="#contact">联系我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>环球旅行，精彩无限！</h2>
+        <p>专业团队 · 全球保障 · 贴心服务，为您提供最优质的出境游体验</p>
+        <a href="#contact" class="cta-button">立即咨询</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>核心服务</h2>
+            <p>一站式旅游服务，让您的旅程无忧无虑</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <span>✈️</span>
+                </div>
+                <h3>出境游</h3>
+                <p>精心策划全球热门目的地旅游线路，涵盖欧洲、亚洲、美洲、大洋洲等各大洲，满足不同旅客的需求。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <span>🎫</span>
+                </div>
+                <h3>机票酒店预订</h3>
+                <p>全球机票及酒店预订服务，提供最具竞争力的价格，让您享受最优惠的出行方案。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <span>🗺️</span>
+                </div>
+                <h3>定制旅行</h3>
+                <p>根据您的需求量身定制专属旅行方案，从行程规划到落地接待，全方位打造完美旅程。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-title">
+                <h2>为什么选择我们</h2>
+                <p>专业 · 可靠 · 贴心</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">👥</div>
+                    <h3>专业团队</h3>
+                    <p>拥有多年行业经验的资深旅行顾问团队</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌐</div>
+                    <h3>全球保障</h3>
+                    <p>遍布全球的合作伙伴网络，全程无忧保障</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💖</div>
+                    <h3>贴心服务</h3>
+                    <p>7×24小时客户支持，随时为您排忧解难</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <h3>品质保证</h3>
+                    <p>严格的供应商筛选机制，确保服务质量</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="destinations" id="destinations">
+        <div class="section-title">
+            <h2>热门目的地</h2>
+            <p>探索世界，从这里开始</p>
+        </div>
+        <div class="dest-grid">
+            <div class="dest-card">
+                <div class="dest-img dest-1">🗼 法国·巴黎</div>
+                <h4>浪漫之都</h4>
+            </div>
+            <div class="dest-card">
+                <div class="dest-img dest-2">🗾 日本·富士山</div>
+                <h4>樱花之国</h4>
+            </div>
+            <div class="dest-card">
+                <div class="dest-img dest-3">🌉 英国·伦敦</div>
+                <h4>泰晤士河畔</h4>
+            </div>
+            <div class="dest-card">
+                <div class="dest-img dest-4">🏔️ 瑞士·阿尔卑斯</div>
+                <h4>雪山仙境</h4>
+            </div>
+            <div class="dest-card">
+                <div class="dest-img dest-5">🎭 澳大利亚·悉尼</div>
+                <h4>南半球明珠</h4>
+            </div>
+            <div class="dest-card">
+                <div class="dest-img dest-6">🏖️ 马尔代夫</div>
+                <h4>热带天堂</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="hero" id="contact" style="padding: 60px 20px;">
+        <h2>联系我们</h2>
+        <p style="margin-bottom: 10px;">📞 咨询热线：010-84475599</p>
+        <p style="margin-bottom: 10px;">🌐 网址：www.ttsglobaltravel.com.cn</p>
+        <p>📱 微信搜索"TTS环球国旅"关注我们</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>TTS环球国旅</h3>
+                <p>Total Travel International Travel Services Co.,Ltd</p>
+                <p>环球旅行，精彩无限！</p>
+            </div>
+            <div class="footer-section">
+                <h3>联系信息</h3>
+                <p>📞 010-84475599</p>
+                <p>🌐 www.ttsglobaltravel.com.cn</p>
+            </div>
+            <div class="footer-section">
+                <h3>服务项目</h3>
+                <a href="#">出境游</a>
+                <a href="#">机票酒店预订</a>
+                <a href="#">定制旅行</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TTS环球国旅 Total Travel International Travel Services. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature-item, .dest-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
